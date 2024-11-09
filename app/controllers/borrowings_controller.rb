@@ -1,5 +1,8 @@
 class BorrowingsController < ApplicationController
-  before_action :set_book, only: [:create, :return]
+  before_action :authenticate_user!
+  before_action :set_book, only: [ :create ]
+  before_action :set_borrowing, only: [ :return_book ]
+  before_action :ensure_librarian, only: [ :return_book ]
 
   def create
     existing_borrowing = Borrowing.find_by(user: current_user, book: @book, returned_at: nil)
@@ -23,15 +26,13 @@ class BorrowingsController < ApplicationController
     end
   end
 
-  def return
-    @borrowing = Borrowing.find_by(user: current_user, book: @book, returned_at: nil)
-
-    if @borrowing
+  def return_book
+    if @borrowing.returned_at.nil?
       @borrowing.update(returned_at: Time.current)
-      @book.update(available_copies: @book.available_copies + 1)
-      redirect_to user_dashboard_path(current_user), notice: 'Libro devuelto exitosamente.'
+      @borrowing.book.update(available_copies: @borrowing.book.available_copies + 1)
+      redirect_to librarian_dashboard_path, notice: 'El libro ha sido marcado como devuelto.'
     else
-      redirect_to user_dashboard_path(current_user), alert: 'No se encontró el préstamo activo.'
+      redirect_to librarian_dashboard_path, alert: 'El libro ya ha sido devuelto anteriormente.'
     end
   end
 
@@ -39,5 +40,13 @@ class BorrowingsController < ApplicationController
 
   def set_book
     @book = Book.find(params[:book_id])
+  end
+
+  def set_borrowing
+    @borrowing = Borrowing.find(params[:id])
+  end
+
+  def ensure_librarian
+    redirect_to root_path, alert: 'No tienes permisos para realizar esta acción.' unless current_user&.librarian?
   end
 end

@@ -1,0 +1,7 @@
+
+  <div class="mx-3">
+    <% if user_signed_in? %>
+      <%= link_to 'Create New Book', new_book_path, class: 'btn btn-dark w-100 mt-4' %>
+    <% end %>
+  </div>
+<%= render 'book_list' %>

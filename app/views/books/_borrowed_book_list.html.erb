@@ -1,0 +1,49 @@
+<% if @total_borrowed_books > 0 %>
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header pb-0">
+          <h6>Lista de Libros Prestados</h6>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Título</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Usuario</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Fecha de Préstamo</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Fecha de Vencimiento</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @borrowings.each do |borrowing| %>
+                  <% unless borrowing.returned_at %>
+                    <tr>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><%= borrowing.book.title %></p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><%= borrowing.user.email %></p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><%= borrowing.borrowed_at.strftime('%d/%m/%Y') %></p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><%= borrowing.due_date.strftime('%d/%m/%Y') %></p>
+                      </td>
+                      <td>
+                        <%= button_to 'Marcar como Devuelto', return_book_book_borrowing_path(borrowing.book, borrowing), method: :patch, class: 'btn btn-success btn-sm' %>
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -17,13 +17,18 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="container py-5">
+  <body class="g-sidenav-show  bg-gray-100">
 
-    <% if notice %>
-      <div class="alert alert-success"><%= notice %></div>
-    <% elsif alert %>
-      <div class="alert alert-danger"><%= alert %></div>
-    <% end %>
-    <%= yield %>
+    <%= render 'layouts/shared/aside_menu' %>
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <% if notice %>
+        <div class="alert alert-success"><%= notice %></div>
+      <% elsif alert %>
+        <div class="alert alert-danger"><%= alert %></div>
+      <% end %>
+      <%= render 'layouts/shared/navbar' %>
+      <%= yield %>
+    </main>
   </body>
 </html>

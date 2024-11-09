@@ -9,6 +9,10 @@
 #   end
 require 'faker'
 
+librarian = User.create!(email: 'librarian@example.com', password: 'password', role: 'librarian')
+member = User.create!(email: 'member@example.com', password: 'password')
+
+
 authors = 10.times.map do
   Author.create!(name: Faker::Book.author)
 end

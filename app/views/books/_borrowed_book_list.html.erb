@@ -3,18 +3,18 @@
     <div class="col-12">
       <div class="card">
         <div class="card-header pb-0">
-          <h6>Lista de Libros Prestados</h6>
+          <h6>Borrowed Books List</h6>
         </div>
         <div class="card-body px-0 pb-2">
           <div class="table-responsive">
             <table class="table align-items-center mb-0">
               <thead>
                 <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Título</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Usuario</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Fecha de Préstamo</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Fecha de Vencimiento</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Acción</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Borrowed Date</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Due Date</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -34,7 +34,7 @@
                         <p class="text-xs font-weight-bold mb-0"><%= borrowing.due_date.strftime('%d/%m/%Y') %></p>
                       </td>
                       <td>
-                        <%= button_to 'Marcar como Devuelto', return_book_book_borrowing_path(borrowing.book, borrowing), method: :patch, class: 'btn btn-success btn-sm' %>
+                        <%= button_to 'Mark as Returned', return_book_book_borrowing_path(borrowing.book, borrowing), method: :patch, class: 'btn btn-success btn-sm' %>
                       </td>
                     </tr>
                   <% end %>

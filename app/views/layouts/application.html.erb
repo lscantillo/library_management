@@ -27,7 +27,9 @@
       <% elsif alert %>
         <div class="alert alert-danger"><%= alert %></div>
       <% end %>
-      <%= render 'layouts/shared/navbar' %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/shared/navbar' %>
+      <% end %>
       <%= yield %>
     </main>
   </body>

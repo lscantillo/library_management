@@ -3,28 +3,26 @@
     <div class="card my-4">
       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
         <div class="bg-gradient-dark shadow-dark border-radius-lg pt-4 pb-3">
-          <h6 class="text-white text-capitalize ps-3">Listado de Libros</h6>
+          <h6 class="text-white text-capitalize ps-3">Book List</h6>
         </div>
       </div>
       <div class="card-body px-0 pb-2">
         <div class="table-responsive p-0">
           <%= form_with url: books_path, method: :get, local: true do |form| %>
             <div class="p-3">
-              <%= form_with url: books_path, method: :get, local: true do |form| %>
-                <div class="input-group">
-                  <%= form.text_field :query, placeholder: "Título, autor, género", class: "form-control" %>
-                  <button type="submit" class="btn btn-dark mt-2" style="height: 100%;">Buscar</button>
-                </div>
-              <% end %>
+              <div class="input-group">
+                <%= form.text_field :query, placeholder: "Title, author, genre", class: "form-control" %>
+                <button type="submit" class="btn btn-dark mt-2" style="height: 100%;">Search</button>
+              </div>
             </div>
-         <% end %>
+          <% end %>
           <table class="table align-items-center mb-0">
             <thead>
               <tr>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Título</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Autor</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Género</th>
-                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Disponibles</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Author</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Genre</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Available</th>
                 <th class="text-secondary opacity-7"></th>
               </tr>
             </thead>
@@ -65,4 +63,7 @@
       </div>
     </div>
   </div>
+</div>
+<div class="d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
 </div>

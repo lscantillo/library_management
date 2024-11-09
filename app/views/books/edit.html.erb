@@ -6,7 +6,7 @@
 
 <br>
 
-<div>
-  <%= link_to "Show this book", @book %> |
-  <%= link_to "Back to books", books_path %>
-</div>
+<div class="d-flex justify-content-between mt-3">
+    <%= button_to "Destroy this Book", @book, method: :delete, class: "btn btn-danger" %>
+    <%= link_to "Back to Books", book_management_path, class: "btn btn-secondary" %>
+  </div>

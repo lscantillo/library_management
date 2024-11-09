@@ -1,74 +1,74 @@
-  <div class="container-fluid py-2">
-    <div class="row">
-      <div class="ms-3">
-        <h3 class="mb-0 h4 font-weight-bolder">Dashboard del Bibliotecario</h3>
-        <p class="mb-4">
-          Consulta el estado de la biblioteca y el rendimiento actual de los libros.
-        </p>
-      </div>
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-          <div class="card-header p-2 ps-3">
-            <div class="d-flex justify-content-between">
-              <div>
-                <p class="text-sm mb-0 text-capitalize">Total de Libros</p>
-                <h4 class="mb-0"><%= @total_books %></h4>
-              </div>
-              <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
-                <i class="bi bi-book"></i>
-              </div>
+<div class="container-fluid py-2">
+  <div class="row">
+    <div class="ms-3">
+      <h3 class="mb-0 h4 font-weight-bolder">Librarian Dashboard</h3>
+      <p class="mb-4">
+        Check the library status and the current performance of the books.
+      </p>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-2 ps-3">
+          <div class="d-flex justify-content-between">
+            <div>
+              <p class="text-sm mb-0 text-capitalize">Total Books</p>
+              <h4 class="mb-0"><%= @total_books %></h4>
+            </div>
+            <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+              <i class="bi bi-book"></i>
             </div>
           </div>
-          <hr class="dark horizontal my-0">
         </div>
+        <hr class="dark horizontal my-0">
       </div>
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-          <div class="card-header p-2 ps-3">
-            <div class="d-flex justify-content-between">
-              <div>
-                <p class="text-sm mb-0 text-capitalize">Libros Prestados</p>
-                <h4 class="mb-0"><%= @total_borrowed_books %></h4>
-              </div>
-              <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
-                <i class="bi bi-journal-arrow-up"></i>
-              </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-2 ps-3">
+          <div class="d-flex justify-content-between">
+            <div>
+              <p class="text-sm mb-0 text-capitalize">Borrowed Books</p>
+              <h4 class="mb-0"><%= @total_borrowed_books %></h4>
+            </div>
+            <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+              <i class="bi bi-journal-arrow-up"></i>
             </div>
           </div>
-          <hr class="dark horizontal my-0">
         </div>
+        <hr class="dark horizontal my-0">
       </div>
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <div class="card">
-          <div class="card-header p-2 ps-3">
-            <div class="d-flex justify-content-between">
-              <div>
-                <p class="text-sm mb-0 text-capitalize">Libros Vencen Hoy</p>
-                <h4 class="mb-0"><%= @books_due_today %></h4>
-              </div>
-              <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
-                <i class="bi bi-calendar-event"></i>
-              </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-header p-2 ps-3">
+          <div class="d-flex justify-content-between">
+            <div>
+              <p class="text-sm mb-0 text-capitalize">Books Due Today</p>
+              <h4 class="mb-0"><%= @books_due_today %></h4>
+            </div>
+            <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+              <i class="bi bi-calendar-event"></i>
             </div>
           </div>
-          <hr class="dark horizontal my-0">
         </div>
+        <hr class="dark horizontal my-0">
       </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card">
-          <div class="card-header p-2 ps-3">
-            <div class="d-flex justify-content-between">
-              <div>
-                <p class="text-sm mb-0 text-capitalize">Miembros con Libros Vencidos</p>
-                <h4 class="mb-0"><%= @members_with_overdue_books.count %></h4>
-              </div>
-              <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
-                <i class="bi bi-people"></i>
-              </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-header p-2 ps-3">
+          <div class="d-flex justify-content-between">
+            <div>
+              <p class="text-sm mb-0 text-capitalize">Members with Overdue Books</p>
+              <h4 class="mb-0"><%= @members_with_overdue_books.count %></h4>
+            </div>
+            <div class="icon icon-md icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-lg">
+              <i class="bi bi-people"></i>
             </div>
           </div>
-          <hr class="dark horizontal my-0">
         </div>
+        <hr class="dark horizontal my-0">
       </div>
     </div>
   </div>
+</div>

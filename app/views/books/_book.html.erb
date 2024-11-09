@@ -1,32 +1,28 @@
-<div id="<%= dom_id book %>">
-  <p>
-    <strong>Title:</strong>
-    <%= book.title %>
-  </p>
+<div id="<%= dom_id book %>" class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Book Details</h5>
+    <p class="card-text">
+      <strong>Title:</strong> <%= book.title %>
+    </p>
 
-  <p>
-    <strong>Author:</strong>
-    <%= book.author %>
-  </p>
+    <p class="card-text">
+      <strong>Author:</strong> <%= book.author.name %>
+    </p>
 
-  <p>
-    <strong>Genre:</strong>
-    <%= book.genre %>
-  </p>
+    <p class="card-text">
+      <strong>Genre:</strong> <%= book.genre.name %>
+    </p>
 
-  <p>
-    <strong>Isbn:</strong>
-    <%= book.isbn %>
-  </p>
+    <p class="card-text">
+      <strong>ISBN:</strong> <%= book.isbn %>
+    </p>
 
-  <p>
-    <strong>Total copies:</strong>
-    <%= book.total_copies %>
-  </p>
+    <p class="card-text">
+      <strong>Book Copies:</strong> <%= book.total_copies %>
+    </p>
 
-  <p>
-    <strong>Available copies:</strong>
-    <%= book.available_copies %>
-  </p>
-
+    <p class="card-text">
+      <strong>Available Copies:</strong> <%= book.available_copies %>
+    </p>
+  </div>
 </div>

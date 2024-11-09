@@ -57,5 +57,4 @@ end
 
 gem "pundit", "~> 2.4"
 gem "pg_search", "~> 2.3"
-
 gem "devise", "~> 4.9"

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authorize_user, only: [:edit, :destroy, :update]
+  before_action :authorize_user, only: [ :edit, :destroy, :update ]
   before_action :set_book, only: %i[ show edit update destroy ]
 
   # GET /books or /books.json

@@ -4,13 +4,13 @@
 #
 #  id               :bigint           not null, primary key
 #  title            :string
-#  author           :string
-#  genre            :string
 #  isbn             :string
 #  total_copies     :integer
 #  available_copies :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  author_id        :bigint
+#  genre_id         :bigint
 #
 require 'rails_helper'
 

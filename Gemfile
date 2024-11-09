@@ -39,6 +39,9 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  gem "annotate"
+  gem "faker", "~> 3.5"
+  gem "rspec-rails"
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
@@ -52,3 +55,7 @@ group :development do
   gem "web-console"
 end
 
+gem "pundit", "~> 2.4"
+gem "pg_search", "~> 2.3"
+
+gem "devise", "~> 4.9"

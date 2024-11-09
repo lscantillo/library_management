@@ -13,9 +13,21 @@
 #  genre_id         :bigint
 #
 class Book < ApplicationRecord
+  include PgSearch::Model
+
   belongs_to :author
   belongs_to :genre
   has_many :borrowings
   validates :title, :author, :genre, :isbn, :total_copies, presence: true
+  validates :title, uniqueness: true
+
+  pg_search_scope :search_books, against: [:title],
+                  associated_against: {
+                    author: :name,
+                    genre: :name
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
 end

@@ -23,7 +23,7 @@ end
     author: authors.sample,
     genre: genres.sample,
     isbn: Faker::Number.unique.number(digits: 13).to_s,
-    total_copies: Faker::Number.between(from: 5, to: 20),
-    available_copies: Faker::Number.between(from: 1, to: 5)
+    total_copies: 5,
+    available_copies: 5
   )
 end

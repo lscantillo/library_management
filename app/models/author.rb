@@ -10,4 +10,5 @@
 class Author < ApplicationRecord
   has_many :books
   validates :name, presence: true, uniqueness: true
+  validates_uniqueness_of :name
 end

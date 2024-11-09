@@ -2,8 +2,9 @@ class BorrowingsController < ApplicationController
   before_action :set_book, only: [:create, :return]
 
   def create
-    # Verificar si el libro tiene copias disponibles y si el usuario no es librarian
-    if @book.available_copies > 0 && !current_user.librarian?
+    existing_borrowing = Borrowing.find_by(user: current_user, book: @book, returned_at: nil)
+
+    if @book.available_copies > 0 && !current_user.librarian? && existing_borrowing.nil?
       @borrowing = Borrowing.new(user: current_user, book: @book, borrowed_at: Time.current, due_date: 2.weeks.from_now)
 
       if @borrowing.save
@@ -13,7 +14,12 @@ class BorrowingsController < ApplicationController
         redirect_to books_path, alert: 'No se pudo procesar el préstamo.'
       end
     else
-      redirect_to books_path, alert: 'El libro no está disponible para préstamo.'
+      alert_message = if existing_borrowing
+                        'Ya tienes un préstamo activo para este libro.'
+                      else
+                        'El libro no está disponible para préstamo.'
+                      end
+      redirect_to books_path, alert: alert_message
     end
   end
 

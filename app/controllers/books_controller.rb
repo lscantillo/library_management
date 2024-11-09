@@ -33,7 +33,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy!
     respond_to do |format|
-      format.html { redirect_to books_path, status: :see_other, notice: "Book was successfully destroyed." }
+      format.html { redirect_to book_management_path, status: :see_other, notice: "Book was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -59,7 +59,7 @@ class BooksController < ApplicationController
     @total_books = Book.count
     @total_borrowed_books = Borrowing.where(returned_at: nil).count
     @books_due_today = Borrowing.where(due_date: Date.today, returned_at: nil).count
-    @members_with_overdue_books = Borrowing.includes(:user, :book).where('due_date < ?', Date.today).where(returned_at: nil)
+    @members_with_overdue_books = Borrowing.includes(:user, :book).where("due_date < ?", Date.today).where(returned_at: nil)
   end
 
   def search_books

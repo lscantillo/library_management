@@ -20,7 +20,6 @@ RSpec.describe "books/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", book_path(book), "post" do
-
       assert_select "input[name=?]", "book[title]"
 
       assert_select "input[name=?]", "book[author]"

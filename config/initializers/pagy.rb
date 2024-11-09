@@ -18,11 +18,11 @@ Pagy::DEFAULT[:limit] = 10 # default
 
 # Extras
 # See https://ddnexus.github.io/pagy/categories/extra
-require 'pagy/extras/pagy'
-require 'pagy/extras/metadata'
-require 'pagy/extras/headers'
-require 'pagy/extras/array'
-require 'pagy/extras/bootstrap'
+require "pagy/extras/pagy"
+require "pagy/extras/metadata"
+require "pagy/extras/headers"
+require "pagy/extras/array"
+require "pagy/extras/bootstrap"
 
 # Legacy Compatibility Extras
 
@@ -100,7 +100,7 @@ require 'pagy/extras/bootstrap'
 # require 'pagy/extras/metadata'
 # For performance reasons, you should explicitly set ONLY the metadata you use in the frontend
 # Pagy::DEFAULT[:metadata] = %i[scaffold_url page prev next last]   # example
-Pagy::DEFAULT[:metadata] = [:page, :first_url, :next_url, :last_url, :count]
+Pagy::DEFAULT[:metadata] = [ :page, :first_url, :next_url, :last_url, :count ]
 # Searchkick extra: Paginate `Searchkick::Results` objects
 # See https://ddnexus.github.io/pagy/docs/extras/searchkick
 # Default :pagy_search method: change only if you use also

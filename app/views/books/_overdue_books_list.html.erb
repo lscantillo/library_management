@@ -1,0 +1,59 @@
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header pb-0">
+          <h6>Overdue Books List</h6>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Borrowed Date</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Due Date</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if @members_with_overdue_books.count > 0 %>
+                  <% @members_with_overdue_books.each do |borrowing| %>
+                    <% unless borrowing.returned_at %>
+                      <tr>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0"><%= borrowing.book.title %></p>
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0"><%= borrowing.user.email %></p>
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0"><%= borrowing.borrowed_at.strftime('%d/%m/%Y') %></p>
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0"><%= borrowing.due_date.strftime('%d/%m/%Y') %></p>
+                        </td>
+                        <td>
+                          <%= button_to 'Send Reminder', return_book_book_borrowing_path(borrowing.book, borrowing), method: :patch, class: 'btn btn-success btn-sm' %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                <div class="d-flex justify-content-center">
+                  <tr>
+                    <td>
+                    <span class="text-secondary">No overdue books found.</span>
+                    </td>
+                  </tr>
+                </div>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

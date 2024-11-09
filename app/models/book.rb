@@ -21,7 +21,7 @@ class Book < ApplicationRecord
   validates :title, :author, :genre, :isbn, :total_copies, presence: true
   validates :title, uniqueness: true
 
-  pg_search_scope :search_books, against: [:title],
+  pg_search_scope :search_books, against: [ :title ],
                   associated_against: {
                     author: :name,
                     genre: :name
@@ -29,5 +29,4 @@ class Book < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
-
 end

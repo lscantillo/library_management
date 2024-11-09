@@ -17,4 +17,11 @@ Rails.application.routes.draw do
   end
   get :book_management, to: "books#book_management", as: :book_management
   devise_for :users
+
+  # API endpoints
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+
+    end
+  end
 end

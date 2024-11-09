@@ -8,11 +8,13 @@
       </div>
       <div class="card-body px-0 pb-2">
         <div class="table-responsive p-0">
-          <%= form_with url: books_path, method: :get, local: true do |form| %>
+          <% form_route = action_name == 'manage' ? book_management_path : books_path %>
+            <%= form_with url: form_route, method: :get, local: true do |form| %>
             <div class="p-3">
               <div class="input-group">
                 <%= form.text_field :query, placeholder: "Title, author, genre", class: "form-control" %>
                 <button type="submit" class="btn btn-dark mt-2" style="height: 100%;">Search</button>
+                <button type="submit" class="btn btn-secondary mt-2" style="height: 100%;">Reset</button>
               </div>
             </div>
           <% end %>

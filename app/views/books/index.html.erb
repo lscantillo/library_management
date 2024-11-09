@@ -1,11 +1,12 @@
 <% content_for :title, "Books" %>
 <% if current_user && !current_user.librarian? %>
   <%= render 'member_dashboard', borrowings: @borrowings %>
-  <%= render 'book_list' %>
+  <%= render 'book_list', action_name: 'borrow' %>
 <% end %>
 
 <% if current_user && current_user.librarian? %>
   <%= render 'librarian_dashboard' %>
+  <%= render 'overdue_books_list' %>
   <%= render 'borrowed_book_list' %>
 <% end %>
 

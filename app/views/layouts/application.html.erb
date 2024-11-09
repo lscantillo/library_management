@@ -17,10 +17,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="container py-5">
 
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% elsif alert %>
+      <div class="alert alert-danger"><%= alert %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

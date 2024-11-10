@@ -19,5 +19,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :borrowings
-  enum role: { member: 0, librarian: 1 }
+  enum :role, [ :member, :librarian ]
 end

@@ -19,7 +19,7 @@ class Book < ApplicationRecord
   belongs_to :genre
   has_many :borrowings
   validates :title, :author, :genre, :isbn, :total_copies, presence: true
-  validates :title, uniqueness: true
+  validates :title, :isbn, uniqueness: true
 
   pg_search_scope :search_books, against: [ :title ],
                   associated_against: {
@@ -29,4 +29,9 @@ class Book < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+  before_create :set_available_copies
+
+  def set_available_copies
+    self.available_copies = total_copies if available_copies.nil?
+  end
 end

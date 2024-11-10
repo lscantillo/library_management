@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   def authorize_user
-    redirect_to root_path, alert: "No tienes permisos para acceder a esta sección." unless current_user&.librarian?
+    redirect_to root_path, alert: "You don't have permission to access this section." unless current_user&.librarian?
   end
 end

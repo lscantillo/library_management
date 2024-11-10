@@ -21,6 +21,17 @@ Rails.application.routes.draw do
   # API endpoints
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      post "login", to: "authentication#login"
+      post "signup", to: "authentication#signup"
+      resources :books, only: [ :index, :create, :update, :destroy ]
+      post "books/:book_id/borrowings", to: "borrowings#create"
+      get "borrowings", to: "borrowings#index"
+      # get "borrowings/:id", to: "borrowings#show"
+      post "borrowings/:id/return", to: "borrowings#return_book"
+
+      # Book Data
+      get "data/genres", to: "data#genres"
+      get "data/authors", to: "data#authors"
     end
   end
 end

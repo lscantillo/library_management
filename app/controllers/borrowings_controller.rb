@@ -12,15 +12,15 @@ class BorrowingsController < ApplicationController
 
       if @borrowing.save
         @book.update(available_copies: @book.available_copies - 1)
-        redirect_to books_path, notice: "Libro pedido exitosamente."
+        redirect_to books_path, notice: "Book successfully borrowed."
       else
-        redirect_to books_path, alert: "No se pudo procesar el préstamo."
+        redirect_to books_path, alert: "Book could not be borrowed."
       end
     else
       alert_message = if existing_borrowing
-                        "Ya tienes un préstamo activo para este libro."
+                        "Already have an active borrowing for this book."
       else
-                        "El libro no está disponible para préstamo."
+                        "Book is not available for borrowing."
       end
       redirect_to books_path, alert: alert_message
     end
@@ -30,9 +30,9 @@ class BorrowingsController < ApplicationController
     if @borrowing.returned_at.nil?
       @borrowing.update(returned_at: Time.current)
       @borrowing.book.update(available_copies: @borrowing.book.available_copies + 1)
-      redirect_to librarian_dashboard_path, notice: "El libro ha sido marcado como devuelto."
+      redirect_to book_management_path, notice: "Book marked as returned."
     else
-      redirect_to librarian_dashboard_path, alert: "El libro ya ha sido devuelto anteriormente."
+      redirect_to book_management_path, alert: "Book has already been returned."
     end
   end
 
@@ -47,6 +47,6 @@ class BorrowingsController < ApplicationController
   end
 
   def ensure_librarian
-    redirect_to root_path, alert: "No tienes permisos para realizar esta acción." unless current_user&.librarian?
+    redirect_to root_path, alert: "You don't have permission to do this." unless current_user&.librarian?
   end
 end

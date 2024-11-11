@@ -111,6 +111,18 @@ The objective of this project is to develop a web application that manages a lib
    rails server
    ```
 
+## Running with Docker
+
+1. Build the Docker image:
+   ```
+   docker-compose build
+   ```
+
+2. Start the Docker container:
+   ```
+   docker-compose up
+   ```
+
 ### Demo Credentials
 - **Librarian**: `librarian@example.com` / `password`
 - **Member**: `member@example.com` / `password`

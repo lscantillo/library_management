@@ -1,0 +1,32 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_NAME=docker_scheduler_development
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    command: bash -c "bin/rails db:migrate && bin/rails db:seed && bin/rails server -b 0.0.0.0"
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: docker_library_management_development
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  db_data:
+  bundle_cache:

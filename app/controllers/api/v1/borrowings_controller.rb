@@ -16,7 +16,7 @@ class Api::V1::BorrowingsController < Api::V1::ApplicationController
   def create
     existing_borrowing = Borrowing.find_by(user: current_user, book: @book, returned_at: nil)
 
-    if @book.available_copies > 0 && !current_user.librarian? && existing_borrowing.nil?
+    if @book&.available_copies > 0 && !current_user.librarian? && existing_borrowing.nil?
       @borrowing = Borrowing.new(user: current_user, book: @book, borrowed_at: Time.current, due_date: 2.weeks.from_now)
 
       if @borrowing.save

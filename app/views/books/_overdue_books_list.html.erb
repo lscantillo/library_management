@@ -14,7 +14,6 @@
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">User</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Borrowed Date</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Due Date</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,9 +32,6 @@
                         </td>
                         <td>
                           <p class="text-xs font-weight-bold mb-0"><%= borrowing.due_date.strftime('%d/%m/%Y') %></p>
-                        </td>
-                        <td>
-                          <%= button_to 'Send Reminder', root_path, method: :patch, class: 'btn btn-secondary btn-sm' %>
                         </td>
                       </tr>
                     <% end %>

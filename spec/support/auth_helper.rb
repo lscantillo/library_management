@@ -5,4 +5,3 @@ module AuthHelper
     JSON.parse(response.body)['token']
   end
 end
-

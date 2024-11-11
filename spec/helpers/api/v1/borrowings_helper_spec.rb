@@ -11,5 +11,4 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe Api::V1::BorrowingsHelper, type: :helper do
-
 end

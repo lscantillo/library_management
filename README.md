@@ -81,8 +81,7 @@ The objective of this project is to develop a web application that manages a lib
 
 ## Demo Links
 
-- [Heroku Demo App](https://heroku-demo-app-link.com)
-- [Postman API Documentation](https://postman-api-documentation-link.com)
+- [Postman API Documentation](https://www.postman.com/restless-zodiac-292911/ballastlane/collection/27o224c/librarymanagement?action=share&creator=5260726)
 
 ## Setup Instructions
 

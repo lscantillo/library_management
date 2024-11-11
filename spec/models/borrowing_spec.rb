@@ -14,5 +14,21 @@
 require 'rails_helper'
 
 RSpec.describe Borrowing, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'valid factory' do
+    it { expect(FactoryBot.build(:borrowing)).to be_valid }
+  end
+
+  describe 'Associations' do
+    it { should belong_to(:user) }
+    it { should belong_to(:book) }
+  end
+
+  describe 'Validations' do
+    subject { FactoryBot.create(:borrowing) }
+
+    it { should validate_presence_of(:user) }
+    it { should validate_presence_of(:book) }
+    it { should validate_presence_of(:borrowed_at) }
+    it { should validate_presence_of(:due_date) }
+  end
 end

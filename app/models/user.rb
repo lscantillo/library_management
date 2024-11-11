@@ -19,5 +19,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :borrowings
+  validates_presence_of :email, :encrypted_password, :role
+  validates_uniqueness_of :email
   enum :role, [ :member, :librarian ]
 end

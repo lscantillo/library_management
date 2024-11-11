@@ -15,5 +15,23 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'valid factory' do
+    it { expect(FactoryBot.build(:book)).to be_valid }
+  end
+
+  describe 'Associations' do
+    it { should have_many(:borrowings) }
+    it { should belong_to(:author) }
+    it { should belong_to(:genre) }
+  end
+
+  describe 'Validations' do
+    subject { FactoryBot.create(:book) }
+
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:isbn) }
+    it { should validate_presence_of(:total_copies) }
+    it { should validate_presence_of(:author) }
+    it { should validate_presence_of(:genre) }
+  end
 end

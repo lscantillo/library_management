@@ -35,7 +35,7 @@
                           <p class="text-xs font-weight-bold mb-0"><%= borrowing.due_date.strftime('%d/%m/%Y') %></p>
                         </td>
                         <td>
-                          <%= button_to 'Send Reminder', return_book_book_borrowing_path(borrowing.book, borrowing), method: :patch, class: 'btn btn-success btn-sm' %>
+                          <%= button_to 'Send Reminder', root_path, method: :patch, class: 'btn btn-secondary btn-sm' %>
                         </td>
                       </tr>
                     <% end %>

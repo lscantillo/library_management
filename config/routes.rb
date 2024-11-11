@@ -26,7 +26,6 @@ Rails.application.routes.draw do
       resources :books, only: [ :index, :create, :update, :destroy ]
       post "books/:book_id/borrowings", to: "borrowings#create"
       get "borrowings", to: "borrowings#index"
-      # get "borrowings/:id", to: "borrowings#show"
       post "borrowings/:id/return", to: "borrowings#return_book"
 
       # Book Data

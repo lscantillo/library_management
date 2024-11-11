@@ -14,4 +14,6 @@
 class Borrowing < ApplicationRecord
   belongs_to :user
   belongs_to :book
+
+  validates_presence_of :user, :book, :borrowed_at, :due_date
 end

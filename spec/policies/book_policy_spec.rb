@@ -1,27 +1,45 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe BookPolicy, type: :policy do
-  let(:user) { User.new }
+  let(:librarian_user) { build(:user, role: :librarian) }
+  let(:member_user) { build(:user, role: :member) }
+  let(:book) { build(:book) }
 
   subject { described_class }
 
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe "#create?" do
+    it "grants access to librarians" do
+      policy = BookPolicy.new(librarian_user, book)
+      expect(policy.create?).to be(true)
+    end
+
+    it "denies access to members" do
+      policy = BookPolicy.new(member_user, book)
+      expect(policy.create?).to be(false)
+    end
   end
 
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  describe "#update?" do
+    it "grants access to librarians" do
+      policy = BookPolicy.new(librarian_user, book)
+      expect(policy.update?).to be(true)
+    end
+
+    it "denies access to members" do
+      policy = BookPolicy.new(member_user, book)
+      expect(policy.update?).to be(false)
+    end
   end
 
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+  describe "#destroy?" do
+    it "grants access to librarians" do
+      policy = BookPolicy.new(librarian_user, book)
+      expect(policy.destroy?).to be(true)
+    end
 
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it "denies access to members" do
+      policy = BookPolicy.new(member_user, book)
+      expect(policy.destroy?).to be(false)
+    end
   end
 end

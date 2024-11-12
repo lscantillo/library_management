@@ -59,6 +59,6 @@ end
 
 gem "devise", "~> 4.9"
 gem "jwt", "~> 2.9"
-gem "pagy", "~> 9.1"
+gem "pagy", "~> 9.2"
 gem "pg_search", "~> 2.3"
 gem "pundit", "~> 2.4"

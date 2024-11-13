@@ -36,5 +36,11 @@ ENV DATABASE_HOST=db \
     DATABASE_PASSWORD=postgres \
     DATABASE_NAME=library_management_development
 
+# Remove pids
+RUN rm -rf tmp/pids
+
+# Set the entrypoint to run the application
+ENTRYPOINT ["./bin/docker-entrypoint"]
+
 # Set the command to start the server in development mode and run seeds
-CMD ["bash", "-c", "bin/rails db:prepare && bin/rails server -b 0.0.0.0"]
+CMD ["bash", "-c", "./bin/rails server -b 0.0.0.0"]

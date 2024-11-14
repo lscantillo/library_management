@@ -13,6 +13,9 @@ RUN npm install -g n
 RUN n 18.12.0
 RUN npm install -g yarn
 
+# Install bunjs
+RUN yarn global add bunjs
+
 # Set the working directory
 WORKDIR /app
 

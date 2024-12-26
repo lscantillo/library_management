@@ -58,7 +58,7 @@ group :development do
 end
 
 gem "devise", "~> 4.9"
-gem "jwt", "~> 2.9"
+gem "jwt", "~> 2.10"
 gem "pagy", "~> 9.1"
 gem "pg_search", "~> 2.3"
 gem "pundit", "~> 2.4"
